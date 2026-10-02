@@ -195,7 +195,9 @@
       <label text="{{VISIONBOT_LABEL_CAMERA_READ}}" web-class="blockLabelStyle"></label>
       <block type="ai_camera_uart_init" />
       <block type="ai_camera_set_mode" />
-      <block type="ai_camera_update_block" />
+      <!-- ai_camera_update_block: an khoi toolbox - khong con can thiet vi
+           ai_camera_bounding_box gio tu doc thang, khong qua cache nua.
+           Van giu dinh nghia trong definition.js de chuong trinh CU con chay. -->
       <block type="ai_camera_bounding_box" />
       <block type="ai_camera_update_arrow" />
       <block type="ai_camera_line_tracking" />

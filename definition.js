@@ -1470,11 +1470,11 @@ Blockly.Blocks["ai_camera_bounding_box"] = {
 Blockly.Python['ai_camera_bounding_box'] = function (block) {
   var dataType = block.getFieldValue('DATA_TYPE');
   var objectId = block.getFieldValue('OBJECT_ID');
-  // Tu dam bao bien cache ton tai (phong khi chua tung goi khoi "Cap nhat"
-  // cung ID, hoac dat sai thu tu) -> tranh NameError, mac dinh tra 0.
-  Blockly.Python.definitions_['ai_camera_block_var_' + objectId] = '_camera_block_' + objectId + ' = {"x": 0, "y": 0, "w": 0, "h": 0, "offset": 0, "distance": 0, "conf": 0}';
-  var code = '_camera_block_' + objectId + '["' + dataType + '"]';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  // Doc THANG tu camera, khong qua cache nua -> khong can khoi "Cap nhat"
+  // truoc do. An toan de dat o bat ky dau (da boc ngoac), khong can block
+  // "Cap nhat" nao chay truoc ca.
+  var code = '(await camera.get_block(' + objectId + '))["' + dataType + '"]';
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Blocks["ai_camera_update_arrow"] = {
